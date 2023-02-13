@@ -1,0 +1,87 @@
+<div class="registerForm">
+    <div class="formHeading">Register User</div>
+    <form [formGroup]="formData" (ngSubmit)="submitForm(formData.value)">
+      <!-- (ngSubmit)="submitForm(formData.value) -->
+      <div class="formObject">
+        <!-- First Name -->
+        <label >First Name : </label> 
+        <input type="text" placeholder="Enter Firstname" formControlName="firstNameControl">
+      </div>
+      <div class="error"><span></span> <!-- Every empty span is given to get a space between for error message i.e, to get exact under input field -->
+        <span class="error-text" *ngIf="getFirstName && (getFirstName.errors?.['required'] || getFirstName.errors?.['pattern']) && (getFirstName.dirty || getFirstName.touched)">*Enter proper First Name!</span>
+        <span class="error-text" *ngIf="getFirstName && (getFirstName.errors?.['minlength'] && !getFirstName.errors?.['pattern']) && (getFirstName.dirty || getFirstName.touched)">*Enter at least 3 characters!</span>
+        <span class="error-text" *ngIf="getFirstName && (getFirstName.errors?.['maxlength'] && !getFirstName.errors?.['pattern']) && (getFirstName.dirty || getFirstName.touched)">*Enter below 256 characters!</span>
+      </div>
+      <div class="formObject">
+        <!-- Last Name -->
+        <label >Last Name : </label>
+        <input type="text" placeholder="Enter Lastname" formControlName="lastNameControl">
+      </div>
+      <div class="error">
+        <span></span>
+        <span class="error-text" *ngIf="getLastName && (getLastName.errors?.['required'] || getLastName.errors?.['pattern']) && (getLastName.dirty || getLastName.touched)">*Enter Proper Last Name!</span>
+        <span class="error-text" *ngIf="getLastName && (getLastName.errors?.['minlength'] && !getLastName.errors?.['pattern']) && (getLastName.dirty || getLastName.touched)">*Enter at least 3 characters!</span>
+        <span class="error-text" *ngIf="getLastName && (getLastName.errors?.['maxlength'] && !getLastName.errors?.['pattern']) && (getLastName.dirty || getLastName.touched)">*Enter below 256 characters!</span>
+      </div>
+      <div class="formObject">
+        <!-- User Name -->
+        <label >UserName : </label>
+        <input type="text" placeholder="Enter Username" formControlName="userNameControl">
+      </div>
+      <div class="error">
+        <span *ngIf="getUserName?.touched && getUserName?.invalid">enter proper Username</span>
+      </div>
+      <div class="formObject">
+        <!-- Age -->
+        <label >Age: </label>
+        <input type="number" placeholder="Enter Age" formControlName="ageControl">
+      </div>
+      <div class="error">
+        <span></span>
+        <span class="error-text" *ngIf="getAge && getAge.errors?.['required'] && (getAge.dirty || getAge.touched)">*required!</span>
+        <span class="error-text" *ngIf="getAge && getAge.errors?.['min'] && (getAge.dirty || getAge.touched)">*Age cannot be less than 0!</span>
+        <span class="error-text" *ngIf="getAge && getAge.errors?.['max'] && (getAge.dirty || getAge.touched)">*Age cannot be more than 999!</span>
+      </div>
+    
+      <div class="formObject">
+        <!-- E-mail Id -->
+        <label>E-mail Id: </label>
+        <input type="text" placeholder="Enter Mail Id" formControlName="mailIdControl">
+      </div>
+      <div class="error">
+        <span *ngIf="getMailId?.touched && getMailId?.invalid">Enter proper Mail ID</span>
+      </div>
+      <div class="formObject">
+        <!-- Phone Number -->
+        <label>Phone Number : </label>
+        <input type="text" placeholder="Enter Phone Number" formControlName="phoneNumberControl">
+      </div>
+      <div class="error">
+        <span *ngIf="getPhoneNumber?.touched && getPhoneNumber?.invalid">Enter proper Phone Number</span>
+      </div>
+      <div *ngFor="let item of person.additionalArray; index as i" id="additionaldata" #{{count}}>
+        <div class="formObject" (keydown.tab)="addAdditionalElement(i)">
+          <!-- Additional elemets -->
+        <label>Add Additional Data {{i}} :</label>
+          <input type="text" placeholder="Enter Additional Element" formControlName="addedElementControl">
+        </div>
+        <div class="error">
+          <span *ngIf="getAddedElement?.touched && getAddedElement?.invalid" >enter proper additional data</span>
+        </div>
+          <!-- common component -->
+        <app-selectinputtype *ngIf="getAddedElement?.valid" (additionalArray)="person.additionalArray" (index)="i" (addedElementValueEmitter)="getValue($event)" (addedElementStatusEmitter)="getStatus($event)">
+        </app-selectinputtype>
+        <div class="formObject" *ngIf="submitStatus[this.additionalItemIndex]">
+          <div>element</div>
+          <div>elementValue</div>
+        </div>
+      </div>
+      <div class="buttons">
+        <!-- buttons -->
+        <button  type="button" (click)= "createNewAdditionalComponent()">Add</button>
+        <button type="reset" (click)="reset()">Reset</button>
+        <button type="submit" [disabled]="formData.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+  

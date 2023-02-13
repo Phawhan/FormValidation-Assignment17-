@@ -1,0 +1,48 @@
+.registerForm{
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    text-align: center;
+    width: 500px;
+    line-height: 50px;
+    padding: 20px;
+}
+.formHeading{
+    font-size: 45px;
+    padding-bottom: 20px;
+}
+.formObject{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+input{
+    height: 25px;
+    border: 1px solid gray;
+    border-bottom: 2px solid black;
+    border-radius: 4px;
+}
+#additionaldata{
+    border: 2px solid black;
+    margin: 20px;
+    padding: 10px;
+
+}
+.error{
+    line-height: 20px;
+    color: red;
+    text-align: right;
+    font-size: smaller;
+    margin: 0px;
+}
+p{
+    margin: 2px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+.buttons button{
+    cursor: pointer;
+}

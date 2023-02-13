@@ -1,0 +1,21 @@
+<h2>Successfully Submitted!!</h2>
+<!-- div to display the data which was submitted in form  -->
+<!-- used to span tag to style it with space between  -->
+<div class="main--div">
+<aside class="main--div__leftAside">
+<p><span>Full Name : &nbsp;</span><span>{{data.firstName}}&nbsp;{{data.lastName}}</span></p>
+<!-- <p><span>Last Name: </span><span>{{data.LastName}}</span></p> -->
+<p><span>Username : &nbsp;</span><span>{{data.userName}}</span></p>
+<p><span>Age : &nbsp;</span><span>{{data.age}}</span></p>
+<p><span>Email : &nbsp;</span><span>{{data.mailId}}</span></p>
+<p><span>Phone Number : &nbsp;</span><span>{{data.phoneNumber}}</span></p>
+<p><span>Date : &nbsp;</span><span>{{data.Date}}</span></p>
+</aside>
+
+<aside class="main--div__rightAside">
+    <div>Additional Information</div>
+    <div *ngFor="let d of data.additionalArray let i=index">
+        <span><b>{{d.element }} :</b></span> <span> {{d.elementValue}}</span>
+    </div>
+</aside>
+</div>

@@ -1,0 +1,15 @@
+#dropDown{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+input{
+    width: 200px;
+}
+select{
+    width: 100px;
+}
+.error{
+    color: red;
+}
